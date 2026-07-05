@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  /* Premium Light Theme */
+  --background: #fafafa; /* Off-white for less eye strain */
+  --foreground: #111827; /* Dark gray for text */
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  
+  /* Primary: Deep Blue / Royal Blue */
+  --primary: #1e3a8a; /* Deep blue */
+  --primary-foreground: #ffffff;
+  
+  /* Secondary: Sky Blue */
+  --secondary: #e0f2fe; /* Light sky blue for soft backgrounds */
+  --secondary-foreground: #0369a1; /* Dark sky blue for text */
+  
+  /* Accent: Orange / Golden Yellow */
+  --accent: #f59e0b; /* Golden orange */
+  --accent-foreground: #ffffff;
+
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #1e3a8a;
+
+  --radius: 0.75rem; /* Rounded corners */
+}
+
+/* Force light mode to prevent dark theme inversion as requested */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Keep light theme values even if system is dark */
+    --background: #fafafa;
+    --foreground: #111827;
+    --card: #ffffff;
+    --card-foreground: #111827;
+    --popover: #ffffff;
+    --popover-foreground: #111827;
+    --primary: #1e3a8a;
+    --primary-foreground: #ffffff;
+    --secondary: #e0f2fe;
+    --secondary-foreground: #0369a1;
+    --accent: #f59e0b;
+    --accent-foreground: #ffffff;
+    --muted: #f3f4f6;
+    --muted-foreground: #6b7280;
+    --border: #e5e7eb;
+    --input: #e5e7eb;
+    --ring: #1e3a8a;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-sans);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
