@@ -32,8 +32,8 @@ export default async function HomePage() {
     return <div className="p-20 text-center">Loading...</div>
   }
 
-  const stats: any = content.stats || []
-  const features: any = content.features || []
+  const stats: any = typeof content.stats === 'string' ? JSON.parse(content.stats) : (content.stats || [])
+  const features: any = typeof content.features === 'string' ? JSON.parse(content.features) : (content.features || [])
 
   return (
     <div className="flex flex-col w-full min-h-screen">

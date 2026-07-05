@@ -7,22 +7,22 @@ const DEFAULT_HOME_CONTENT = {
   heroBadge: "#1 Academy in Maharashtra",
   heroTitle: "Build Your Future with DHEY Career Academy",
   heroSubtitle: "Government Exam Preparation & Physical Training Excellence. Start your journey towards a prestigious career today.",
-  stats: JSON.stringify([
+  stats: [
     { label: "Selected Students", value: "5,000+" },
     { label: "Expert Faculty", value: "50+" },
     { label: "Mock Tests", value: "1,200+" },
     { label: "Success Rate", value: "95%" },
-  ]),
+  ],
   featuresTitle: "Why Choose DHEY?",
   featuresSub: "We provide a comprehensive ecosystem designed to guarantee your success in competitive exams.",
-  features: JSON.stringify([
+  features: [
     { iconName: "BookOpen", title: "Government Exam Coaching", desc: "Expert guidance for SSC, MPSC, Police, Army, Navy, and Air Force with updated syllabus." },
     { iconName: "Dumbbell", title: "Physical Training", desc: "Dedicated ground training, endurance building, and obstacle courses by ex-military trainers." },
     { iconName: "Trophy", title: "Mock Tests & Daily Practice", desc: "Computer-based mock tests with negative marking and detailed performance analytics." },
     { iconName: "Users", title: "Personal Guidance", desc: "One-on-one mentorship, doubt-clearing sessions, and regular parent-teacher meetings." },
     { iconName: "ShieldCheck", title: "Hostel Facility", desc: "Safe, secure, and disciplined hostel facilities with nutritious diet plans." },
     { iconName: "Target", title: "Medical Preparation", desc: "Pre-medical checkups and guidance to ensure you meet all physical requirements." },
-  ]),
+  ],
   coursesTitle: "Popular Courses",
   coursesSub: "Choose from our specialized programs designed for absolute success.",
   ctaTitle: "Ready to Serve the Nation?",
@@ -76,8 +76,8 @@ export async function updateHomePageContent(formData: FormData) {
         value: formData.get(`stat_${i}_value`) as string,
       })
     }
-    data.stats = JSON.stringify(stats)
-
+    data.stats = stats
+    
     // Features can be updated later if needed, for now we keep the same logic or just text updates
     // In this iteration, we keep feature cards static unless we build a complex UI for them. 
     // To be safe, we'll extract them if they exist in the form, otherwise ignore.
@@ -93,7 +93,7 @@ export async function updateHomePageContent(formData: FormData) {
           iconName: featureIcons[i],
         })
       }
-      data.features = JSON.stringify(features)
+      data.features = features
     }
 
     await prisma.homePageContent.update({
