@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import { 
   LayoutDashboard, Users, BookOpen, GraduationCap, 
   FileText, Bell, CreditCard, Settings, Menu, X, LogOut,
-  Target, Shield, Award, Activity
+  Target, Shield, Award, Activity, Layers, ClipboardList, BellRing
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -25,11 +25,13 @@ export default function DashboardLayout({
 
   const adminLinks = [
     { href: "/admin", label: "Overview", icon: LayoutDashboard },
+    { href: "/admin/content", label: "Website Content", icon: Layers },
     { href: "/admin/students", label: "Students", icon: Users },
     { href: "/admin/courses", label: "Courses", icon: BookOpen },
-    { href: "/admin/admissions", label: "Admissions", icon: FileText },
+    { href: "/admin/admissions", label: "Admissions", icon: ClipboardList },
     { href: "/admin/mock-tests", label: "Mock Tests", icon: Target },
-    { href: "/admin/notices", label: "Notices", icon: Bell },
+    { href: "/admin/notices", label: "Notice Board", icon: BellRing },
+    { href: "/admin/contacts", label: "Contact Forms", icon: Users },
     { href: "/admin/payments", label: "Payments", icon: CreditCard },
     { href: "/admin/settings", label: "Settings", icon: Settings },
   ]

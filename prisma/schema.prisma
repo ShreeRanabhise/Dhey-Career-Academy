@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum Role {
@@ -64,4 +65,40 @@ model Course {
   published   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model HomePageContent {
+  id              String   @id @default("1")
+  heroBadge       String
+  heroTitle       String
+  heroSubtitle    String
+  stats           Json     // Array of {label, value}
+  featuresTitle   String
+  featuresSub     String
+  features        Json     // Array of {title, desc, iconName}
+  coursesTitle    String
+  coursesSub      String
+  ctaTitle        String
+  ctaSub          String
+  updatedAt       DateTime @updatedAt
+}
+
+model Notice {
+  id             String   @id @default(cuid())
+  title          String
+  targetAudience String
+  date           String
+  isPinned       Boolean  @default(false)
+  status         String   @default("Draft")
+  createdAt      DateTime @default(now())
+}
+
+model MockTest {
+  id           String   @id @default(cuid())
+  title        String
+  course       String
+  date         String
+  participants Int      @default(0)
+  status       String   @default("Scheduled")
+  createdAt    DateTime @default(now())
 }
